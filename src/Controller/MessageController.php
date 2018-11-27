@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/message")
  */
-class MessageController extends AbstractController
+class MessageController extends BaseController
 {
     /**
      * @Route("/", name="message_index", methods="GET")

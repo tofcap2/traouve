@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/traobject")
  */
-class TraobjectController extends AbstractController
+class TraobjectController extends BaseController
 {
     /**
      * @Route("/", name="traobject_index", methods="GET")
