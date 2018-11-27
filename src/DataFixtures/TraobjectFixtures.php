@@ -66,6 +66,34 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $cles->setCounty($this->getReference("county-2"));
         $manager->persist($cles);
 
+        $cb= new Traobject();
+        $cb->setTitle("Carte bancaire");
+        $cb->setPicture("cb.jpg");
+        $cb->setDescription("J'ai laisse ma carte bancaire au bar des sports");
+        $cb->setEventAt(new \DateTime("2018-11-25"));
+        $cb->setCity("Guingamp");
+        $cb->setAddress("Avenue Foch");
+        $cb->setCreatedAt(new \DateTime("2018-11-25"));
+        $cb->setCategory($this->getReference("category-1"));
+        $cb->setState($this->getReference("state-trouve"));
+        $cb->setUser($this->getReference("user-paul"));
+        $cb->setCounty($this->getReference("county-3"));
+        $manager->persist($cb);
+
+        $chien= new Traobject();
+        $chien->setTitle("Chien");
+        $chien->setPicture("chien.jpg");
+        $chien->setDescription("Mon chien s'est enfuit. Il s'appelle Brutus, il est très gentil. Récompense pour celui qui me le ramènera");
+        $chien->setEventAt(new \DateTime("2018-11-02"));
+        $chien->setCity("Saint-Malo");
+        $chien->setAddress("Avenue Foch");
+        $chien->setCreatedAt(new \DateTime("2018-11-03"));
+        $chien->setCategory($this->getReference("category-4"));
+        $chien->setState($this->getReference("state-perdu"));
+        $chien->setUser($this->getReference("user-marie"));
+        $chien->setCounty($this->getReference("county-1"));
+        $manager->persist($chien);
+
         $manager->flush();
 
     }

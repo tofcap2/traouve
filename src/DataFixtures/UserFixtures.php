@@ -56,6 +56,15 @@ class UserFixtures extends Fixture
         $manager->persist($marie);
         $this->addReference('user-marie', $marie);
 
+        $paul = new User();
+        $paul->setFirstname("Paul");
+        $paul->setLastname("Durand");
+        $paul->setEmail("p.durand@gmail.com");
+        $paul->setPassword($this->passwordEncoder->encodePassword($marie, "1234"));
+        $paul->setPhone("1209348756");
+        $manager->persist($paul);
+        $this->addReference('user-paul', $paul);
+
 
 
         $manager->flush();
