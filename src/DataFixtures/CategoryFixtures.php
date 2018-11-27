@@ -12,7 +12,7 @@ class CategoryFixtures extends Fixture
     {
         $portefeuille = new Category();
         $portefeuille->setLabel("Portefeuille");
-        $portefeuille->setColor("#FF0000");
+        $portefeuille->setColor("#dc143c");
         $portefeuille->setIcon("money");
         $manager->persist($portefeuille);
         $this->setReference('category-1', $portefeuille);
