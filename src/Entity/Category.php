@@ -63,7 +63,7 @@ class Category
     /**
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -81,7 +81,7 @@ class Category
     /**
      * @return string
      */
-    public function getIcon(): string
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
@@ -99,7 +99,7 @@ class Category
     /**
      * @return string
      */
-    public function getColor(): string
+    public function getColor(): ?string
     {
         return $this->color;
     }
@@ -114,5 +114,9 @@ class Category
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getLabel();
+    }
 
 }

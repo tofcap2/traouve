@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Traobject;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,15 +17,11 @@ class TraobjectType extends AbstractType
             ->add('picture')
             ->add('description')
             ->add('eventAt')
-            ->add('dateEnd')
             ->add('city')
             ->add('address')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('category')
             ->add('county')
-            ->add('state')
-            ->add('user')
+
         ;
     }
 

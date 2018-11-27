@@ -30,7 +30,7 @@ class StateFixtures extends Fixture
         $this->addReference('state-trouve', $trouve);
 
         $perdu = new State();
-        $perdu->setLabel("Trouve");
+        $perdu->setLabel("Perdu");
         $perdu->setColor("#FF0000");
         $manager->persist($perdu);
         $this->addReference('state-perdu', $perdu);

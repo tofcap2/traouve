@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class State
 {
+    const FOUND = "Trouvé";
+    const LOST = "Perdu";
+
     /**
      * @var int
      *
@@ -89,5 +92,8 @@ class State
         return $this;
     }
 
-
+    public function __toString()
+    {
+        return $this->getLabel();
+    }
 }
