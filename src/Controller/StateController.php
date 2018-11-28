@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\State;
-use App\Form\StateType;
+use App\Form\AvisType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +32,7 @@ class StateController extends BaseController
     public function new(Request $request): Response
     {
         $state = new State();
-        $form = $this->createForm(StateType::class, $state);
+        $form = $this->createForm(AvisType::class, $state);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -62,7 +62,7 @@ class StateController extends BaseController
      */
     public function edit(Request $request, State $state): Response
     {
-        $form = $this->createForm(StateType::class, $state);
+        $form = $this->createForm(AvisType::class, $state);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

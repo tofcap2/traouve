@@ -10,7 +10,12 @@
                 retrouvés grâce à notre plateforme de mise en relation !</p>
             <section class="row">
                 <article class="col-md-4">
-                    <a class="btn btn-primary" href="form-lost.html">
+                    <a class="btn btn-primary"
+                       {% if app.user %}
+                       href="{{ path('traobject_new') }}"
+                        {% else %}
+                        href="{{ path('app_login') }}"
+                        {% endif %}>
                         <i class="fa fa-plus-circle"></i>
                         <h2>Créer un avis de recherche</h2>
                     </a>
