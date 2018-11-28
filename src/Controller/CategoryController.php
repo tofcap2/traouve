@@ -89,4 +89,9 @@ class CategoryController extends BaseController
 
         return $this->redirectToRoute('category_index');
     }
+
+    public function findTraobjectByCategory()
+    {
+
+    }
 }

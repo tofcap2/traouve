@@ -20,14 +20,31 @@
     </h5>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="{{ path('homepage') }}">Accueil</a>
-        <a class="p-2 text-dark" href="form.html">Déposer une annonce</a>
+        {% if app.user %}
+            <a class="p-2 text-dark" href="form.html">Déposer une annonce</a>
+
+        {% endif %}
+
         <a class="p-2 text-dark" href="list-lost.html">Objets perdus</a>
         <a class="p-2 text-dark" href="{{ path('traobject_new') }}">Objets trouvés</a>
     </nav>
-    <a class="btn btn-outline-primary" href="register.html">
-        <i class="fa fa-user-plus"></i>
-        Créer un compte
-    </a>
+    {% if app.user %}
+        <a class="btn btn-outline-primary" href="{{ path('app_logout') }}">
+            <i class="fa fa-sign-out"></i>
+            Se déconnecter
+        </a>
+    {% else %}
+        <a class="btn btn-outline-primary" href="{{ path('app_login') }}">
+            <i class="fa fa-sign-in"></i>
+            Se connecter
+        </a>
+        <a class="btn btn-outline-primary" href="{{ path('user_registration') }}">
+            <i class="fa fa-sign-in"></i>
+            Créer un compte
+        </a>
+
+    {% endif %}
+
 </div>
 
 

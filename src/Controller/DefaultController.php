@@ -13,10 +13,10 @@ class DefaultController extends BaseController
     public function index()
     {
         $stateFound = $this->getDoctrine()->getRepository(State::class)->findOneBy(["label" => State::FOUND]);
-        $traobjectsFound = $this->getDoctrine()->getRepository(Traobject::class)->findLast($stateFound, 2);
+        $traobjectsFound = $this->getDoctrine()->getRepository(Traobject::class)->findLast($stateFound, 3);
 
         $stateLost = $this->getDoctrine()->getRepository(State::class)->findOneBy(["label" => State::LOST]);
-        $traobjectsLost = $this->getDoctrine()->getRepository(Traobject::class)->findLast($stateLost, 2);
+        $traobjectsLost = $this->getDoctrine()->getRepository(Traobject::class)->findLast($stateLost, 3);
 
 
         return $this->render('default/homepage.html.twig', [
@@ -24,4 +24,6 @@ class DefaultController extends BaseController
             'traobjectsLost' => $traobjectsLost
         ]);
     }
+
+
 }

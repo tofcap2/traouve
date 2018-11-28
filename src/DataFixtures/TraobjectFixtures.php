@@ -68,7 +68,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
 
         $cb= new Traobject();
         $cb->setTitle("Carte bancaire");
-        $cb->setPicture("cb.jpg");
+        $cb->setPicture("");
         $cb->setDescription("J'ai laisse ma carte bancaire au bar des sports");
         $cb->setEventAt(new \DateTime("2018-11-25"));
         $cb->setCity("Guingamp");

@@ -45,6 +45,7 @@ class TraobjectType extends AbstractType
         ]);
     }
 
+
     private function getChoices()
     {
         $choices = Category::class;

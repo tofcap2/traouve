@@ -13,28 +13,28 @@ class CategoryFixtures extends Fixture
         $portefeuille = new Category();
         $portefeuille->setLabel("Portefeuille");
         $portefeuille->setColor("#dc143c");
-        $portefeuille->setIcon("money");
+        $portefeuille->setIcon("fa-money");
         $manager->persist($portefeuille);
         $this->setReference('category-1', $portefeuille);
 
         $jouet = new Category();
         $jouet->setLabel("Jouet");
         $jouet->setColor("#FFFF00");
-        $jouet->setIcon("child");
+        $jouet->setIcon("fa-child");
         $manager->persist($jouet);
         $this->setReference('category-2', $jouet);
 
         $cle = new Category();
         $cle->setLabel("Cle");
         $cle->setColor("#0000FF");
-        $cle->setIcon("key");
+        $cle->setIcon("fa-key");
         $manager->persist($cle);
         $this->setReference('category-3', $cle);
 
         $animaux = new Category();
         $animaux->setLabel("Animaux");
         $animaux->setColor("#008000");
-        $animaux->setIcon("paw");
+        $animaux->setIcon("fa-paw");
         $manager->persist($animaux);
         $this->setReference('category-4', $animaux);
 

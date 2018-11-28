@@ -15,7 +15,11 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{ asset('uploads/' ~ traobject.picture) }}" class="img-thumbnail" alt="{{ traobject.title }}">
+                    {% if traobject.picture != null %}
+                        <img class="card-img-top" src="{{ asset('uploads/' ~ traobject.picture) }}" alt="Portefeuille">
+                    {% else %}
+                        <div class="card-logo-top" style="background-color: {{ traobject.category.color }}"><i class="fa {{ traobject.category.icon }}"></i></div>
+                    {% endif %}
                 </div>
                 <div class="col-md-8">
                     <p>{{ traobject.description }}</p>
@@ -24,7 +28,7 @@
         </div>
         <footer class="card-footer">
             <ul class="object-features">
-                <li><a href="#" class="badge" style="{{ traobject.category.color }};"><i class="{{ traobject.category.icon }}"></i> {{ traobject.category.label }}</a></li>
+                <li><a href="#" class="badge" style="background-color: {{ traobject.category.color }};"><i class="{{ traobject.category.icon }}"></i> {{ traobject.category.label }}</a></li>
                 <li><a href="#" class="badge badge-info"><i class="fa fa-calendar"></i> {{ traobject.eventAt|date('d m Y') }}</a></li>
                 <li><a href="#" class="badge badge-info"><i class="fa fa-map-marker"></i> {{ traobject.city }}</a></li>
             </ul>
