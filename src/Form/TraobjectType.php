@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Traobject;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,16 +24,15 @@ class TraobjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class)
-            ->add('picture', FileType::class)
-            ->add('description', TextType::class)
-            ->add('eventAt')
-            ->add('city', TextType::class)
-            ->add('address', TextType::class)
-            ->add('category', ChoiceType::class,[
-                'choices' => $this->getChoices()
-            ])
-            ->add('county', TextType::class)
+            ->add('state')
+            ->add('title', TextType::class, ["label" => "form.title"])
+            ->add('picture', FileType::class, ["label" => "form.picture"])
+            ->add('description', TextType::class , ["label" => "form.description"])
+            ->add('eventAt', DateType::class, ["widget" => "single_text"], ["label" => "form.eventAt"])
+            ->add('city', TextType::class, ["label" => "form.city"])
+            ->add('address', TextType::class, ["label" => "form.address"])
+            ->add('category')
+            ->add('county')
             ->add('save', SubmitType::class)
 
         ;
@@ -45,15 +46,4 @@ class TraobjectType extends AbstractType
         ]);
     }
 
-
-    private function getChoices()
-    {
-        $choices = Category::class;
-        $output = [];
-        foreach($choices as $k => $v){
-            $output[$v] = $k;
-        }
-        return $output;
-
-    }
 }

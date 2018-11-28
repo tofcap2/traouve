@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @property
  * @ORM\Table(name="traobject", indexes={@ORM\Index(name="fk_traobject_category_idx", columns={"category_id"}), @ORM\Index(name="fk_traobject_state1_idx", columns={"state_id"}), @ORM\Index(name="fk_traobject_user1_idx", columns={"user_id"}), @ORM\Index(name="fk_traobject_county1_idx", columns={"county_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\TraobjectRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Traobject
 {
@@ -376,6 +377,22 @@ class Traobject
     {
         $this->user = $user;
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->setUpdatedAt(new \DateTime());
     }
 
     public function __toString()

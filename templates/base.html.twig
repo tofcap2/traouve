@@ -22,11 +22,10 @@
         <a class="p-2 text-dark" href="{{ path('homepage') }}">Accueil</a>
         {% if app.user %}
             <a class="p-2 text-dark" href="form.html">Déposer une annonce</a>
-
         {% endif %}
 
-        <a class="p-2 text-dark" href="list-lost.html">Objets perdus</a>
-        <a class="p-2 text-dark" href="{{ path('traobject_new') }}">Objets trouvés</a>
+        <a class="p-2 text-dark" href="{{ path('traobject_lost') }}">Objets perdus</a>
+        <a class="p-2 text-dark" href="{{ path('traobject_found') }}">Objets trouvés</a>
     </nav>
     {% if app.user %}
         <a class="btn btn-outline-primary" href="{{ path('app_logout') }}">

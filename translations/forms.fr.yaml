@@ -1,8 +1,9 @@
-title: Titre
-picture: Image
-description: Description
-eventAt: Date
-city: Ville
-address: Adresse
-category: Catégorie
-county: Département
+form:
+  title: Titre
+  picture: Image
+  description: Description
+  eventAt: Date
+  city: Ville
+  address: Adresse
+  category: Catégorie
+  county: Département

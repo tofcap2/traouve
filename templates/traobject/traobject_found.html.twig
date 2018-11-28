@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <h1>Objets trouvés</h1>
+    <section class="row">
+        {% for traobject in traobjects %}
+            <article class="col-md-3">
+                {% include 'traobject/card.html.twig' %}
+            </article>
+        {% endfor %}
+    </section>
+
+{% endblock %}

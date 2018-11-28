@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\State;
 use App\Entity\Traobject;
 use App\Form\TraobjectType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,11 +28,35 @@ class TraobjectController extends BaseController
     }
 
     /**
+     * @Route("/found", name="traobject_found")
+     */
+    public function found()
+    {
+        $foundState = $this->getDoctrine()->getRepository(State::class)->findBy(["label" => State::FOUND]);
+        $traobjects = $this->getDoctrine()->getRepository(Traobject::class)->findBy(["state" => $foundState]);
+
+        return $this->render('traobject/traobject_found.html.twig', ['traobjects' => $traobjects]);
+    }
+
+    /**
+     * @Route("/lost", name="traobject_lost")
+     */
+    public function lost()
+    {
+        $lostState = $this->getDoctrine()->getRepository(State::class)->findBy(["label" => State::LOST]);
+        $traobjects = $this->getDoctrine()->getRepository(Traobject::class)->findBy(["state" => $lostState]);
+
+        return $this->render('traobject/traobject_lost.html.twig', ['traobjects' => $traobjects]);
+    }
+
+    /**
      * @Route("/new", name="traobject_new", methods="GET|POST")
      */
     public function new(Request $request): Response
     {
+        $stateFound = $this->getDoctrine()->getRepository(State::class)->findOneBy(["label" => State::FOUND]);
         $traobject = new Traobject();
+        $traobject->setState($stateFound);
         $form = $this->createForm(TraobjectType::class, $traobject);
         $form->handleRequest($request);
 
@@ -40,7 +65,7 @@ class TraobjectController extends BaseController
             $em->persist($traobject);
             $em->flush();
 
-            return $this->redirectToRoute('traobject_index');
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('traobject/new.html.twig', [

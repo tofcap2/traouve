@@ -3,7 +3,9 @@
     {% if traobject.picture != null %}
         <img class="card-img-top" src="{{ asset('uploads/' ~ traobject.picture) }}" alt="Portefeuille">
     {% else %}
-        <div class="card-logo-top" style="background-color: {{ traobject.category.color }}"><i class="fa {{ traobject.category.icon }}"></i></div>
+        <div class="card-logo-top" style="background-color: {{ traobject.category.color }}">
+            <i class="fa {{ traobject.category.icon }}"></i>
+        </div>
 
     {% endif %}
 
