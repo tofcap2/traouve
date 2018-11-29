@@ -40,11 +40,20 @@
     <h3>Commentaires</h3>
 
     <div class="alert alert-secondary" role="alert">
+        {% if app.user %}
+            <form action="">
+                <input type="text" placeholder="laissez votre commentaire">
+                <input type="submit" value="Submit">
+
+            </form>
+
+        {% else %}
         <p>Veuillez vous connecter afin de pouvoir laisser un commentaire</p>
-        <a href="login.html" class="btn btn-primary">
+        <a href="{{ path('app_login') }}" class="btn btn-primary">
             <i class="fa fa-sign-in"></i>
             Me connecter
         </a>
+        {% endif %}
     </div>
 
     <ul class="list-unstyled">

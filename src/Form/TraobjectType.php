@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Forms;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TraobjectType extends AbstractType
@@ -26,7 +27,7 @@ class TraobjectType extends AbstractType
         $builder
             ->add('state')
             ->add('title', TextType::class, ["label" => "form.title"])
-            ->add('picture', FileType::class, ["label" => "form.picture"])
+            ->add('picture', FileType::class, ["label" => "picture ("])
             ->add('description', TextType::class , ["label" => "form.description"])
             ->add('eventAt', DateType::class, ["widget" => "single_text"], ["label" => "form.eventAt"])
             ->add('city', TextType::class, ["label" => "form.city"])

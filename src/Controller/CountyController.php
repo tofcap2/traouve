@@ -27,6 +27,18 @@ class CountyController extends BaseController
     }
 
     /**
+     * @Route("/", name="county")
+     */
+    public function footerCounty()
+    {
+        $counties = $this->getDoctrine()
+            ->getRepository(County::class)
+            ->findAll();
+
+        return $this->render('county/footercounty.html.twig', ['counties' => $counties]);
+    }
+
+    /**
      * @Route("/new", name="county_new", methods="GET|POST")
      */
     public function new(Request $request): Response

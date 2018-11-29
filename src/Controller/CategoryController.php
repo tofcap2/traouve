@@ -18,12 +18,25 @@ class CategoryController extends BaseController
      */
     public function index(): Response
     {
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+
+        return $this->render('category/index.html.twig', [
+            'categories' => $categories
+        ]);
+    }
+
+    /**
+     * @Route("/", name="category")
+     */
+    public function footerCategory()
+    {
         $categories = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findAll();
 
-        return $this->render('category/index.html.twig', ['categories' => $categories]);
+        return $this->render('category/footercategory.html.twig', ['categories' => $categories]);
     }
+
 
     /**
      * @Route("/new", name="category_new", methods="GET|POST")

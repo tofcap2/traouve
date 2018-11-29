@@ -74,24 +74,10 @@
                     <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
                 </div>
                 <div class="col-6 col-md">
-                    <h5>Catégories</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Clés</a></li>
-                        <li><a class="text-muted" href="#">Portefeuille</a></li>
-                        <li><a class="text-muted" href="#">Jouet</a></li>
-                        <li><a class="text-muted" href="#">Animaux</a></li>
-                        <li><a class="text-muted" href="#">Electroniques</a></li>
-                        <li><a class="text-muted" href="#">Vêtements</a></li>
-                    </ul>
+                    {{ render(controller('App\\Controller\\CategoryController::footerCategory')) }}
                 </div>
                 <div class="col-6 col-md">
-                    <h5>Départements</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Rennes</a></li>
-                        <li><a class="text-muted" href="#">Brest</a></li>
-                        <li><a class="text-muted" href="#">Vannes</a></li>
-                        <li><a class="text-muted" href="#">St Malo</a></li>
-                    </ul>
+                    {{ render(controller('App\\Controller\\CountyController::footerCounty')) }}
                 </div>
                 <div class="col-6 col-md">
                     <h5>Notre entreprise</h5>
