@@ -2,7 +2,8 @@
 
 
 namespace App\Entity;
-
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="traobject", indexes={@ORM\Index(name="fk_traobject_category_idx", columns={"category_id"}), @ORM\Index(name="fk_traobject_state1_idx", columns={"state_id"}), @ORM\Index(name="fk_traobject_user1_idx", columns={"user_id"}), @ORM\Index(name="fk_traobject_county1_idx", columns={"county_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\TraobjectRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @Vich\Uploadable
  */
 class Traobject
 {
@@ -37,6 +39,12 @@ class Traobject
      * @ORM\Column(name="picture", type="string", length=255, nullable=true)
      */
     private $picture;
+
+    /**
+     * @Vich\UploadableField(mapping="traobject_images", fileNameProperty="picture")
+     * @var File
+     */
+    private $pictureFile;
 
     /**
      * @var string|null
@@ -90,7 +98,7 @@ class Traobject
     /**
      * @var Category
      *
-     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="traobjects")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * })
@@ -100,7 +108,7 @@ class Traobject
     /**
      * @var County
      *
-     * @ORM\ManyToOne(targetEntity="County")
+     * @ORM\ManyToOne(targetEntity="County", inversedBy="traobjects")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="county_id", referencedColumnName="id")
      * })
@@ -130,7 +138,7 @@ class Traobject
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -139,7 +147,7 @@ class Traobject
      * @param int $id
      * @return Traobject
      */
-    public function setId(int $id): Traobject
+    public function setId(int $id): ?Traobject
     {
         $this->id = $id;
         return $this;
@@ -343,6 +351,8 @@ class Traobject
         return $this;
     }
 
+
+
     /**
      * @return State
      */
@@ -393,6 +403,27 @@ class Traobject
     public function preUpdate()
     {
         $this->setUpdatedAt(new \DateTime());
+    }
+
+    /**
+     * @return Null|File
+     */
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
+    }
+
+    /**
+     * @param Null|File $picture
+     */
+    public function setPictureFile(File $picture = null)
+    {
+        $this->pictureFile = $picture;
+
+        if ($picture){
+            $this->updatedAt = new \DateTime('now');
+        }
+
     }
 
     public function __toString()

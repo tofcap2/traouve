@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Collection;
 
 /**
  * County
@@ -27,6 +29,16 @@ class County
      * @ORM\Column(name="label", type="string", length=255, nullable=false)
      */
     private $label;
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="App\Entity\Traobject", mappedBy="county")
+     */
+    private $traobjects;
+
+    public function __construct()    {
+        $this->traobjects = new ArrayCollection();
+    }
 
     /**
      * @var int
@@ -88,6 +100,24 @@ class County
         $this->zipcode = $zipcode;
         return $this;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getTraobjects(): \Doctrine\Common\Collections\Collection
+    {
+        return $this->traobjects;
+    }
+
+    /**
+     * @param Collection $traobjects
+     */
+    public function setTraobjects(Collection $traobjects): void
+    {
+        $this->traobjects = $traobjects;
+    }
+
+
 
     public function __toString()
     {

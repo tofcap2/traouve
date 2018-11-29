@@ -25,9 +25,7 @@ class CategoryController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/", name="category")
-     */
+
     public function footerCategory()
     {
         $categories = $this->getDoctrine()

@@ -3,28 +3,17 @@
 {% block title %}Category{% endblock %}
 
 {% block body %}
-    <h1>Category</h1>
+    <h1>Les trouvailles dans la catégorie : {{ category.label }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
-            </tr>
-            <tr>
-                <th>Label</th>
-                <td>{{ category.label }}</td>
-            </tr>
-            <tr>
-                <th>Icon</th>
-                <td>{{ category.icon }}</td>
-            </tr>
-            <tr>
-                <th>Color</th>
-                <td>{{ category.color }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="row">
+        {% for traobject in category.traobjects %}
+            <article class="col-md-3">
+                {% include 'traobject/card.html.twig' %}
+            </article>
+        {% endfor %}
+    </section>
+
+
 
     <a href="{{ path('category_index') }}">back to list</a>
 

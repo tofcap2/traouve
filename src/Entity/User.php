@@ -5,9 +5,13 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ *
+ * @Vich\Uploadable
  */
 class User implements UserInterface
 {
@@ -34,7 +38,41 @@ class User implements UserInterface
      */
     private $email;
 
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+     */
     private $picture;
+
+    /**
+     * @Vich\UploadableField(mapping="traobject_images", fileNameProperty="picture")
+     * @var File
+     */
+    private $pictureFile;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime|null $updatedAt
+     */
+    public function setUpdatedAt(?\DateTime $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
 
     private $phone;
 
@@ -74,21 +112,42 @@ class User implements UserInterface
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
-    public function getPicture()
+    public function getPicture(): ?string
     {
         return $this->picture;
     }
 
     /**
-     * @param mixed $picture
+     * @param string|null $picture
      * @return User
      */
-    public function setPicture($picture)
+    public function setPicture(?string $picture): User
     {
         $this->picture = $picture;
         return $this;
+    }
+
+    /**
+     * @return Null|File
+     */
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
+    }
+
+    /**
+     * @param Null|File $picture
+     */
+    public function setPictureFile(File $picture = null)
+    {
+        $this->pictureFile = $picture;
+
+        if ($picture){
+            $this->updatedAt = new \DateTime('now');
+        }
+
     }
 
     /**

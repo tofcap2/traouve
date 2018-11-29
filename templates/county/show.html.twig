@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+    <h1>Les trouvailles dans le département : {{ county.label }}</h1>
+
+    <section class="row">
+        {% for traobject in county.traobjects %}
+            <article class="col-md-3">
+                {% include 'traobject/card.html.twig' %}
+            </article>
+        {% endfor %}
+    </section>
+
+
+{% endblock %}

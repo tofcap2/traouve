@@ -15,6 +15,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use Vich\UploaderBundle\VichUploaderBundle;
 
 class TraobjectType extends AbstractType
 {
@@ -27,7 +29,7 @@ class TraobjectType extends AbstractType
         $builder
             ->add('state')
             ->add('title', TextType::class, ["label" => "form.title"])
-            ->add('picture', FileType::class, ["label" => "picture ("])
+            ->add('pictureFile',VichImageType::class, ["label" => "picture"])
             ->add('description', TextType::class , ["label" => "form.description"])
             ->add('eventAt', DateType::class, ["widget" => "single_text"], ["label" => "form.eventAt"])
             ->add('city', TextType::class, ["label" => "form.city"])
