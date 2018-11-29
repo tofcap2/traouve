@@ -40,7 +40,7 @@ class Comment
      *
      * @ORM\ManyToOne(targetEntity="Traobject")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="traobject_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="traobject_id", referencedColumnName="id")
      * })
      */
     private $traobject;

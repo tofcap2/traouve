@@ -15,7 +15,7 @@ easy_admin:
                     - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
         User:
             class: App\Entity\User
-            label: 'User'
+            label: 'Utilisateur'
             list:
                 fields:
                     - { property: 'lastname', type: 'text' }
@@ -26,9 +26,26 @@ easy_admin:
                     - { property: 'roles' }
         Category:
             class: App\Entity\Category
-            label: 'User'
+            label: 'Catégories'
             list:
                 fields:
                     - { property: 'label', type: 'text' }
                     - { property: 'icon', type: 'text' }
                     - { property: 'color', type: 'text' }
+            show:
+                fields:
+                    - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
+        County:
+            class: App\Entity\County
+            label: 'Départements'
+            list:
+                fields:
+                    - { property: 'label', type: 'text' }
+                    - { property: 'zipcode', type: 'text' }
+        Comment:
+            class: App\Entity\Comment
+            label: 'Commentaires'
+            list:
+                fields:
+                    - { property: 'content', type: 'text' }
+                    - { property: 'created_at', type: 'text' }
