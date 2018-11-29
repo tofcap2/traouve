@@ -2,21 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
 use App\Entity\Traobject;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Forms;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-use Vich\UploaderBundle\VichUploaderBundle;
 
 class TraobjectType extends AbstractType
 {
@@ -29,7 +22,7 @@ class TraobjectType extends AbstractType
         $builder
             ->add('state')
             ->add('title', TextType::class, ["label" => "form.title"])
-            ->add('pictureFile',VichImageType::class, ["label" => "picture"])
+            ->add('pictureFile',VichImageType::class, ["label" => "Image"])
             ->add('description', TextType::class , ["label" => "form.description"])
             ->add('eventAt', DateType::class, ["widget" => "single_text"], ["label" => "form.eventAt"])
             ->add('city', TextType::class, ["label" => "form.city"])

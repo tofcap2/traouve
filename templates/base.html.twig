@@ -27,16 +27,16 @@
         <a class="p-2 text-dark" href="{{ path('traobject_lost') }}">Objets perdus</a>
         <a class="p-2 text-dark" href="{{ path('traobject_found') }}">Objets trouvés</a>
     </nav>
-    {% if app.user %}
+    {% if is_granted('ROLE_ADMIN')  %}
         <a class="btn btn-outline-primary" href="{{ path('app_logout') }}">
             <i class="fa fa-sign-out"></i>
             Se déconnecter
         </a>
-    {% elseif is_granted('ROLE_ADMIN') %}
-        <a class="btn btn-outline-success" href="{{ path('admin') }}">
+        <a class="btn btn-outline-primary" href="{{ path('admin') }}">
             <i class="fa fa-sign-out"></i>
             Administration
         </a>
+    {% elseif app.user%}
         <a class="btn btn-outline-primary" href="{{ path('app_logout') }}">
             <i class="fa fa-sign-out"></i>
             Se déconnecter
