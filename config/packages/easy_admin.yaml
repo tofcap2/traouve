@@ -22,7 +22,6 @@ easy_admin:
                     - { property: 'firstname', type: 'text', label: 'Prénom' }
                     - { property: 'picture', type: 'image', label: 'Photo', base_path: '%app.path.uploads_dir%' }
                     - { property: 'email', type: 'email', label: 'Email' }
-                    - { property: 'password', type: 'password', label: 'Mot de passe' }
                     - { property: 'roles', label: 'Role' }
         Category:
             class: App\Entity\Category
