@@ -5,11 +5,11 @@ easy_admin:
             label: 'Traobject'
             list:
                 fields:
-                    - { property: 'title', type: 'text' }
-                    - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
-                    - { property: 'event_at', type: 'datetime' }
-                    - { property: 'city', type: 'text' }
-                    - { property: 'county', type: 'text' }
+                    - { property: 'title', type: 'text', label: 'Titre' }
+                    - { property: 'picture', type: 'image',label: 'Photo', base_path: '%app.path.uploads_dir%' }
+                    - { property: 'event_at', type: 'datetime', label: 'Date' }
+                    - { property: 'city', type: 'text', label: 'Ville' }
+                    - { property: 'county', type: 'text', label: 'Département' }
             show:
                 fields:
                     - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
@@ -18,20 +18,20 @@ easy_admin:
             label: 'Utilisateur'
             list:
                 fields:
-                    - { property: 'lastname', type: 'text' }
-                    - { property: 'firstname', type: 'text' }
-                    - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
-                    - { property: 'email', type: 'email' }
-                    - { property: 'password', type: 'password' }
-                    - { property: 'roles' }
+                    - { property: 'lastname', type: 'text', label: 'Nom' }
+                    - { property: 'firstname', type: 'text', label: 'Prénom' }
+                    - { property: 'picture', type: 'image', label: 'Photo', base_path: '%app.path.uploads_dir%' }
+                    - { property: 'email', type: 'email', label: 'Email' }
+                    - { property: 'password', type: 'password', label: 'Mot de passe' }
+                    - { property: 'roles', label: 'Role' }
         Category:
             class: App\Entity\Category
             label: 'Catégories'
             list:
                 fields:
-                    - { property: 'label', type: 'text' }
-                    - { property: 'icon', type: 'text' }
-                    - { property: 'color', type: 'text' }
+                    - { property: 'label', type: 'text', label: 'Catégorie' }
+                    - { property: 'icon', type: 'text', label: 'Icone' }
+                    - { property: 'color', type: 'text', label: 'Couleur' }
             show:
                 fields:
                     - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
@@ -40,12 +40,12 @@ easy_admin:
             label: 'Départements'
             list:
                 fields:
-                    - { property: 'label', type: 'text' }
-                    - { property: 'zipcode', type: 'text' }
+                    - { property: 'label', type: 'text', label: 'Département' }
+                    - { property: 'zipcode', type: 'text', label: 'Code postal' }
         Comment:
             class: App\Entity\Comment
             label: 'Commentaires'
             list:
                 fields:
-                    - { property: 'content', type: 'text' }
-                    - { property: 'created_at', type: 'text' }
+                    - { property: 'content', type: 'text', label: 'Contenu' }
+                    - { property: 'created_at', type: 'text', label: 'Date' }
